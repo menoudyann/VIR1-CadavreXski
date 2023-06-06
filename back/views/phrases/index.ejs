@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>cadavreXski</title>
+    <link href="/assets/css/stylesheet.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/assets/js/cadavreXski.js"></script>
+</head>
+<body class="bg-slate-600 text-white flex flex-col items-center justify-center h-screen">
+    <header class="text-center">
+        <div class="font-thin justify-end">
+            <select id="selectLang" class="bg-slate-600 text-white font-thin">
+                <option value="en">english</option>
+                <option value="fr">français</option>
+                <option value="de">deutsch</option>
+            </select>
+        </div>
+        <h1 class="text-6xl font-bold">
+            cadavreXski
+        </h1>
+        <p id="pAuthors" class="text-slate-200 font-thin"></p>
+    </header>
+
+    <main class="pb-2 w-screen px-2 flex flex-col items-center">
+        <div class="w-full max-w-md mx-auto">
+            <div class="rounded pt-6 pb-8 mb-4 flex flex-col items-center" id="formPhrase" action="/api/v1/phrases/" method="post">
+                <div class="mb-4 w-full">
+                    <label id="lblPhrase" class="block text-left text-md font-bold mb-2" for="phrase">
+                        Phrase
+                    </label>
+                    <input class="text-black w-full shadow appearance-none border rounded py-2 px-2 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Enter your phrase" id="inPhrase">
+                </div>
+                <button type="submit" class="self-end inline-block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" type="button" id="btnSubmitPhrase">
+                    Send
+                </button>
+            </div>
+        </div>
+        <div class="w-full max-w-md mx-auto">
+            <div class="flex flex-row mb-2">
+                <p id="lblInsertedPhrases" class="block text-left text-md font-bold" for="divPhrases">
+                    Inserted Phrases
+                </p>
+                <button type="submit" title="This button will reset the Inserted Phrases table." class="ml-auto inline-block text-white bg-red-500 hover:bg-red-400 font-bold py-2 px-2 text-xs border-b-4 border-red-700 hover:border-red-500 rounded" type="button" id="btnRefresh">
+                    Reset
+                </button>
+            </div>
+            <div>
+                <div class="text-left rounded p-4 mb-4 bg-slate-50 text-black overflow-y-auto overflow-x-hidden max-h-32" id="divPhrases">
+                    <% phrases.forEach(function(phrase) { %>
+                        <%= phrase %>
+                      <% }); %>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p id="pCopyright" class="text-center text-slate-200 font-thin">©Copyright 2023 by cadavreXski. All rights reserved.</p>
+    </footer>
+</body>
+</html>
