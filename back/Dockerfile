@@ -4,7 +4,7 @@ FROM node:latest
 
 ENV NODE_ENV=dev
 
-WORKDIR /back
+WORKDIR /back/
 
 COPY ["package.json", "package-lock.json*", "./"]
 
