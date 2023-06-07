@@ -12,4 +12,4 @@ RUN npm install --dev
 
 COPY . .
 
-CMD ["node", "main.js"]
+CMD ["npm", "run", "dev"]
