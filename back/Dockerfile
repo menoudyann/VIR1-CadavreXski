@@ -12,4 +12,4 @@ RUN npm install --dev
 
 COPY . .
 
-CMD ["node", "app.js"]
+CMD [ "node", "app.js"]

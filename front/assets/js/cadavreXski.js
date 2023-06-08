@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function addPhrase(phrases){
     // redirect to store route with phrase en POST
-    fetch("http://localhost:8080/api/v1/phrases", {
+    fetch("http://localhost:1234/api/v1/phrases", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -54,7 +54,7 @@ function addPhrase(phrases){
 
 function resetPhrases(){
     // redirect to destroy route
-    fetch("http://localhost:8080/api/v1/phrases/destroy", {
+    fetch("http://localhost:1234/api/v1/phrases/destroy", {
         method: "DELETE"
     })
     .then(response => response.json())

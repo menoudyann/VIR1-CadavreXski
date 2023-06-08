@@ -2,7 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 8080
+const port = 1234;
 const { router } = require("./routes")
 
 app.use(cors());
@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Server is running on port" + port )
+  console.log("Server is running on port " + port )
 })
 
 module.exports = {
