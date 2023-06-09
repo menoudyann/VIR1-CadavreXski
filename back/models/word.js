@@ -1,8 +1,12 @@
+const { DataTypes } = require('sequelize');
+const sequelize = require('../database/db'); // Assuming you have a separate db.js file for Sequelize initialization
 
-class Word {
-    constructor(word) {
-      this.word = word;
-    }
+const Word = sequelize.define('Word', {
+  word: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
-  
-  module.exports = Word;
+  // Add more columns as needed
+});
+
+module.exports = Word;
