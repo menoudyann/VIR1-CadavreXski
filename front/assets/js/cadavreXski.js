@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function(){
     var inPhrase = document.getElementById("inPhrase");
     var btnSubmitPhrase = document.getElementById("btnSubmitPhrase");

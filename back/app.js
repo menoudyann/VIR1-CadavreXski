@@ -1,9 +1,11 @@
 //app.js
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 1234;
+const PORT = process.env.SERVER_PORT || 1234;
 const { router } = require("./routes")
+
 
 app.use(cors());
 app.set('view engine', 'ejs');
@@ -15,8 +17,8 @@ app.get("/", (req, res) => {
   res.redirect("/api/v1/phrases")
 });
 
-app.listen(port, () => {
-  console.log("Server is running on port " + port )
+app.listen(PORT, () => {
+  console.log("Server is running on port " + PORT )
 })
 
 module.exports = {
