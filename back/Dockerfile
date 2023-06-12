@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM node:latest 
+FROM node:18-alpine
 
 ENV NODE_ENV=dev
 
