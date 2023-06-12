@@ -32,7 +32,30 @@ document.addEventListener("DOMContentLoaded", function(){
     btnRefresh.addEventListener("click", function(){
         resetPhrases();
     })
+
+    getAllPhrases()
 })
+
+
+function getAllPhrases(){
+    // redirect to store route with phrase en POST
+    fetch("http://localhost:1234/api/v1/phrases", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(response => {
+        const divPhrases = document.getElementById("divPhrases");
+        response.forEach(element => {
+            const span = document.createElement("span");
+            span.innerHTML = element.word + ' '
+            divPhrases.appendChild(span); 
+        });
+    })
+    .catch(err => console.log(err))
+}
 
 function addPhrase(phrases){
     // redirect to store route with phrase en POST
@@ -45,8 +68,10 @@ function addPhrase(phrases){
     })
     .then(response => response.json())
     .then(response => {
-        var divPhrases = document.getElementById("divPhrases");
-        divPhrases.textContent += response.phrase + " ";
+        const divPhrases = document.getElementById("divPhrases");
+        const span = document.createElement("span");
+        span.innerHTML = response.word + ' '
+        divPhrases.appendChild(span);
     })
     .catch(err => console.log(err))
 }
