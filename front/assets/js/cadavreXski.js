@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function(){
     var btnSubmitPhrase = document.getElementById("btnSubmitPhrase");
     var btnRefresh = document.getElementById("btnRefresh")
     var selectLang = document.getElementById("selectLang");
-    var backend_port = process.env.BACKEND_PORT;
 
     let language = navigator.language || navigator.userLanguage;
     translate(language.substr(0, 2));
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function addPhrase(phrases){
     // redirect to store route with phrase en POST
-    fetch("http://localhost:" + backend_port + "/api/v1/phrases", {
+    fetch("http://localhost:1234/api/v1/phrases", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -55,7 +54,7 @@ function addPhrase(phrases){
 
 function resetPhrases(){
     // redirect to destroy route
-    fetch("http://localhost:" + backend_port + "api/v1/phrases/destroy", {
+    fetch("http://localhost:1234/api/v1/phrases/destroy", {
         method: "DELETE"
     })
     .then(response => response.json())
