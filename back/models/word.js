@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../database/db'); // Assuming you have a separate db.js file for Sequelize initialization
-
+const { sequelize } = require("../database/db")
 const Word = sequelize.define('Word', {
   word: {
     type: DataTypes.STRING,

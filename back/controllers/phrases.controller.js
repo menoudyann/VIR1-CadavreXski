@@ -1,6 +1,5 @@
 const { json } = require("express")
 const {Sequelize, DataTypes} = require("sequelize");
-const sequelize = require("../database/db");
 const Word = require("../models/word");
 
 const index = async (req,res) => {

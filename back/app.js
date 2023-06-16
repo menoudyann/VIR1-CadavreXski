@@ -4,8 +4,9 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.SERVER_PORT;
+const { sequelize } = require("./database/db")
 const { router } = require("./routes")
-
+sequelize.sync();
 
 app.use(cors());
 app.set('view engine', 'ejs');
