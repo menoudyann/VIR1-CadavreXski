@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
  database_password,
   {
     host: database_host,
+    port: database_port,
     dialect: database_type,
     define:{
       timestamps: false
