@@ -6,18 +6,14 @@ const database_name = process.env.DATABASE_NAME
 const database_user = process.env.DATABASE_USER
 const database_password = process.env.DATABASE_PASSWORD
 
-const sequelize = new Sequelize(
- database_name,
- database_user,
- database_password,
-  {
-    host: database_host,
-    port: database_port,
-    dialect: database_type,
-    define:{
-      timestamps: false
-    },
-  }
-);
+const sequelize = new Sequelize({
+  dialect: database_type,
+  host: database_host,
+  database: database_name,
+  username: database_user,
+  password: database_password,
+  port: database_port,
+  logging: false
+});
 
 module.exports = {sequelize}

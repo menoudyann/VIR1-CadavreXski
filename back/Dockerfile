@@ -6,6 +6,7 @@ ENV NODE_ENV=dev
 
 WORKDIR /back
 
+
 COPY ["package.json", "package-lock.json*", "./"]
 
 RUN npm install --dev
