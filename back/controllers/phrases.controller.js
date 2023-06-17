@@ -1,22 +1,23 @@
 const { json } = require("express")
+const {Sequelize, DataTypes} = require("sequelize");
+const Word = require("../models/word");
 
-let phrases = []
-
-const index = (req,res) => {
+const index = async (req,res) => {
+    const words = await Word.findAll()
     // return all phrases and view
-    res.json({phrases: phrases})
+    res.json(words)
 }
 
-const store = (req,res) => {
+const store = async (req,res) => {
+    const word = await Word.create({ word: req.body.phrase });
     // store phrase and redirect to index
-    phrases.push(req.body.phrase)
-    res.json({phrase: req.body.phrase})
+    res.json(word)
 }
 
-const destroy = (req,res) => {
+const destroy = async (req,res) => {
     // delete all phrases and redirect to index
-    phrases = []
-    res.json({phrase: "All phrases deleted"})
+    await Word.destroy({truncate: true})
+    res.sendStatus(200)
 }
 
 module.exports = {
