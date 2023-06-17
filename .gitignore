@@ -1,4 +1,3 @@
-/docker-compose.yml
 database/*
 .env
 /node_modules
