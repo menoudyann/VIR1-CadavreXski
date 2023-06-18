@@ -22,8 +22,8 @@ services:
       - 3306:3306
 
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:3306"]
-        interval: 30s
+        test: ["CMD", "curl", "-f", "${VITE_APP_API_URL}:3306"]
+        interval: 10s
         timeout: 10s
         retries: 5
 
@@ -42,8 +42,8 @@ services:
       - 1234:1234
 
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:1234"]
-        interval: 30s
+        test: ["CMD", "curl", "-f", "${VITE_APP_API_URL}:1234"]
+        interval: 5s
         timeout: 10s
         retries: 5  
 
