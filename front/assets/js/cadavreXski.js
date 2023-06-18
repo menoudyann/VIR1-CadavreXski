@@ -1,4 +1,5 @@
-require('dotenv').config();
+const backendHost = window.BACKEND_HOST;
+console.log(`Backend host: ${backendHost}`);
 
 document.addEventListener("DOMContentLoaded", function(){
     var inPhrase = document.getElementById("inPhrase");
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function getAllPhrases(){
     // redirect to store route with phrase en POST
-    fetch("http://" + BACKEND_HOST + ":" + {BACKEND_PORT} + "/api/v1/phrases", {
+    fetch("http://" + BACKEND_HOST + ":1234/api/v1/phrases", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -56,7 +57,7 @@ function getAllPhrases(){
         response.forEach(element => {
             const span = document.createElement("span");
             span.innerHTML = element.word + ' '
-            divPhrases.appendChild(span); 
+            divPhrases.appendChild(span);
         });
     })
     .catch(err => console.log(err))
@@ -64,7 +65,7 @@ function getAllPhrases(){
 
 function addPhrase(phrases){
     // redirect to store route with phrase en POST
-    fetch("http://" + BACKEND_HOST + ":" + {BACKEND_PORT} + "/api/v1/phrases", {
+    fetch("http://" + BACKEND_HOST + ":1234/api/v1/phrases", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -83,7 +84,7 @@ function addPhrase(phrases){
 
 function resetPhrases(){
     // redirect to destroy route
-    fetch("http://" + BACKEND_HOST + ":" + {BACKEND_PORT} + "/api/v1/phrases/destroy", {
+    fetch("http://" + BACKEND_HOST + ":1234/api/v1/phrases/destroy", {
         method: "DELETE"
     })
     .then(response => response.json())
