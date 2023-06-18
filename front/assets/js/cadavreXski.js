@@ -1,5 +1,5 @@
-const BACKEND_PORT = process.env.BACKEND_PORT;
-const BACKEND_HOST = process.env.BACKEND_HOST;
+const BACKEND_PORT = import.meta.env.VITE_APP_BACKEND_PORT;
+const BACKEND_HOST = import.meta.env.VITE_APP_BACKEND_HOST;
 
 document.addEventListener("DOMContentLoaded", function(){
     var inPhrase = document.getElementById("inPhrase");

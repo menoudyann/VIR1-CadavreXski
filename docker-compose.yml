@@ -74,7 +74,7 @@ services:
 
     environment:
       - VITE_APP_BACKEND_HOST=${VITE_APP_BACKEND_HOST}
-      - VITE_APP_BACKEND_PORT=${VITE_APP_BACKEND_PORT=1234}
+      - VITE_APP_BACKEND_PORT=${VITE_APP_BACKEND_PORT}
 
 volumes:
   db_data:
