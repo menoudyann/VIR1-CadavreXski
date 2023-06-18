@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 document.addEventListener("DOMContentLoaded", function(){
     var inPhrase = document.getElementById("inPhrase");
     var btnSubmitPhrase = document.getElementById("btnSubmitPhrase");
@@ -6,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let language = navigator.language || navigator.userLanguage;
     translate(language.substr(0, 2));
+
+    let BACKEND_PORT = process.env.BACKEND_PORT;
+    let BACKEND_HOST = process.env.BACKEND_HOST;
 
     // Set selected value according to navigator language
     for (var i = 0; i < selectLang.options.length; i++) {
@@ -39,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function getAllPhrases(){
     // redirect to store route with phrase en POST
-    fetch("http://localhost:1234/api/v1/phrases", {
+    fetch("http://" + BACKEND_HOST + ":" + {BACKEND_PORT} + "/api/v1/phrases", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -59,7 +64,7 @@ function getAllPhrases(){
 
 function addPhrase(phrases){
     // redirect to store route with phrase en POST
-    fetch("http://localhost:1234/api/v1/phrases", {
+    fetch("http://" + BACKEND_HOST + ":" + {BACKEND_PORT} + "/api/v1/phrases", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -78,7 +83,7 @@ function addPhrase(phrases){
 
 function resetPhrases(){
     // redirect to destroy route
-    fetch("http://cadavrexski.cld.education:1234/api/v1/phrases/destroy", {
+    fetch("http://" + BACKEND_HOST + ":" + {BACKEND_PORT} + "/api/v1/phrases/destroy", {
         method: "DELETE"
     })
     .then(response => response.json())
