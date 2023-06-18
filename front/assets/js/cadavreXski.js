@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 const BACKEND_PORT = process.env.BACKEND_PORT;
 const BACKEND_HOST = process.env.BACKEND_HOST;
-=======
-const backendHost = window.BACKEND_HOST;
-console.log(`Backend host: ${backendHost}`);
->>>>>>> aa5014f76c30d429faf572a9e3c026c3f28bb8b8
 
 document.addEventListener("DOMContentLoaded", function(){
     var inPhrase = document.getElementById("inPhrase");
