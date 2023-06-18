@@ -63,6 +63,10 @@ services:
     networks:
       - vir1-network
 
+    environment:
+      - BACKEND_HOST=back
+      - BACKEND_PORT=1234
+
 volumes:
   db_data:
   db_config:
