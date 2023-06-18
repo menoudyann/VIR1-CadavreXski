@@ -10,9 +10,6 @@ document.addEventListener("DOMContentLoaded", function(){
     let language = navigator.language || navigator.userLanguage;
     translate(language.substr(0, 2));
 
-    let BACKEND_PORT = process.env.BACKEND_PORT;
-    let BACKEND_HOST = process.env.BACKEND_HOST;
-
     // Set selected value according to navigator language
     for (var i = 0; i < selectLang.options.length; i++) {
         if (selectLang.options[i].value === language.substr(0, 2)) {
