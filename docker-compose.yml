@@ -41,6 +41,12 @@ services:
     ports:
       - 1234:1234
 
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:1234"]
+        interval: 30s
+        timeout: 10s
+        retries: 5  
+
     environment: 
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
@@ -56,16 +62,20 @@ services:
   front:
     image: cadavrexski_front
     container_name: front
+
+    depends_on:
+      back:
+        condition: service_healthy
+        
     ports:
       - 80:80
-    depends_on:
-      - back    
+
     networks:
       - vir1-network
 
     environment:
-      - BACKEND_HOST=back
-      - BACKEND_PORT=1234
+      - VITE_APP_BACKEND_HOST=${VITE_APP_BACKEND_HOST}
+      - VITE_APP_BACKEND_PORT=${VITE_APP_BACKEND_PORT=1234}
 
 volumes:
   db_data:
