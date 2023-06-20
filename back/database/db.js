@@ -13,7 +13,10 @@ const sequelize = new Sequelize({
   username: database_user,
   password: database_password,
   port: database_port,
-  logging: false
+  logging: false,
+  define: {
+    timestamps: false // désactive les timestamps pour tous les modèles
+  }
 });
 
 module.exports = {sequelize}

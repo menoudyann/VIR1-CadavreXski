@@ -1,6 +1,5 @@
 const BACKEND_PORT = import.meta.env.VITE_APP_BACKEND_PORT;
 const BACKEND_HOST = import.meta.env.VITE_APP_BACKEND_HOST;
-
 document.addEventListener("DOMContentLoaded", function(){
     var inPhrase = document.getElementById("inPhrase");
     var btnSubmitPhrase = document.getElementById("btnSubmitPhrase");
@@ -42,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function getAllPhrases(){
     // redirect to store route with phrase en POST
-    fetch("http://" + BACKEND_HOST + ":" + BACKEND_HOST + "/api/v1/phrases", {
+    fetch("http://" + BACKEND_HOST + ":" + BACKEND_PORT + "/api/v1/phrases", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -81,7 +80,7 @@ function addPhrase(phrases){
 
 function resetPhrases(){
     // redirect to destroy route
-    fetch("http://" + BACKEND_HOST + ":" + BACKEND_PORT + "/api/v1/phrases/destroy", {
+    fetch("http://" + BACKEND_HOST + ":" + BACKEND_PORT + "/api/v1/phrases", {
         method: "DELETE"
     })
     .then(response => response.json())

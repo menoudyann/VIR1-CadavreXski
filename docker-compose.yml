@@ -22,7 +22,7 @@ services:
       - 3306:3306
 
     healthcheck:
-        test: ["CMD", "curl", "-f", "${VITE_APP_API_URL}:3306"]
+        test: ["CMD", "curl", "-f", "http://db:3306"]
         interval: 10s
         timeout: 10s
         retries: 5
@@ -38,16 +38,18 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    
     ports:
-      - 1234:1234
+      - 443:5000
 
     healthcheck:
-        test: ["CMD", "curl", "-f", "${VITE_APP_API_URL}:1234"]
-        interval: 5s
+        test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/api/v1/phrases"]
+        interval: 10s
         timeout: 10s
-        retries: 5  
+        retries: 5     
 
-    environment: 
+    environment:
+      - SERVER_PORT=${SERVER_PORT}  
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
       - DATABASE_TYPE=${DATABASE_TYPE}
@@ -58,23 +60,32 @@ services:
     networks:
       - vir1-network
 
+    dns: 
+      - my-dns
+
 # ----------------------------------------------------------------------------------------------------------------------
   front:
     image: cadavrexski_front
     container_name: front
 
-    depends_on:
-      back:
-        condition: service_healthy
-        
     ports:
       - 80:80
     networks:
       - vir1-network
 
+    depends_on:
+      back:
+        condition: service_healthy
+
     environment:
       - VITE_APP_BACKEND_HOST=${VITE_APP_BACKEND_HOST}
       - VITE_APP_BACKEND_PORT=${VITE_APP_BACKEND_PORT}
+
+
+  my-dns:
+    image: coredns/coredns
+    networks:
+      - vir1-network
 
 volumes:
   db_data:
@@ -82,4 +93,5 @@ volumes:
 
 networks:
   vir1-network:
+    name: vir1-network
     driver: bridge
