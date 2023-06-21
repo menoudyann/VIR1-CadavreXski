@@ -71,6 +71,7 @@ services:
 # ----------------------------------------------------------------------------------------------------------------------
   nginx:
     image: nginx:stable-alpine3.17-slim
+    container_name: nginx
     ports:
       - 80:80
     volumes:
@@ -78,6 +79,8 @@ services:
     depends_on:
       - back
       - front
+    network: 
+      - vir1-network 
 
 volumes:
   db_data:
