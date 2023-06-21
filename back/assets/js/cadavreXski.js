@@ -1,3 +1,6 @@
+BACKEND_HOST = import.meta.env.VITE_APP_BACKEND_HOST;
+BACKEND_PORT = import.meta.env.VITE_APP_BACKEND_PORT;
+
 document.addEventListener("DOMContentLoaded", function(){
     var inPhrase = document.getElementById("inPhrase");
     var btnSubmitPhrase = document.getElementById("btnSubmitPhrase");
@@ -34,9 +37,29 @@ document.addEventListener("DOMContentLoaded", function(){
     })
 })
 
+function getAllPhrases(){
+    // redirect to store route with phrase en POST
+    fetch("http://" + VITE_APP_BACKEND_HOST + ":" + VITE_APP_BACKEND_PORT + "/api/v1/phrases", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(response => {
+        const divPhrases = document.getElementById("divPhrases");
+        response.forEach(element => {
+            const span = document.createElement("span");
+            span.innerHTML = element.word + ' '
+            divPhrases.appendChild(span);
+        });
+    })
+    .catch(err => console.log(err))
+}
+
 function addPhrase(phrases){
     // redirect to store route with phrase en POST
-    fetch("phrases", {
+    fetch("http://" + VITE_APP_BACKEND_HOST + ":" + VITE_APP_BACKEND_PORT + "/api/v1/phrases" , {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -53,7 +76,7 @@ function addPhrase(phrases){
 
 function resetPhrases(){
     // redirect to destroy route
-    fetch("phrases/destroy", {
+    fetch("http://" + VITE_APP_BACKEND_HOST + ":" + VITE_APP_BACKEND_PORT + "/api/v1/phrases/destroy", {
         method: "DELETE"
     })
     .then(response => response.json())
