@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function getAllPhrases(){
     // redirect to store route with phrase en POST
-    fetch("http://localhost:1234/api/v1/phrases", {
+    fetch("http://cadavrexski.cld.education:1234/api/v1/phrases", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -61,7 +61,7 @@ function getAllPhrases(){
 
 function addPhrase(phrases){
     // redirect to store route with phrase en POST
-    fetch("http://localhost:1234/api/v1/phrases", {
+    fetch("http://cadavrexski.cld.education:1234/api/v1/phrases", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -80,7 +80,7 @@ function addPhrase(phrases){
 
 function resetPhrases(){
     // redirect to destroy route
-    fetch("http://localhost:1234/api/v1/phrases", {
+    fetch("http://cadavrexski.cld.education/api/v1/phrases", {
         method: "DELETE"
     })
     .then(response => response.json())
