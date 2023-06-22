@@ -59,14 +59,29 @@ services:
     image: cadavrexski_front
     container_name: front
 
-    ports:
+    ports: 
       - 5173:5173
+
     networks:
       - vir1-network
 
     environment:
       - VITE_APP_BACKEND_HOST=${VITE_APP_BACKEND_HOST}
       - VITE_APP_BACKEND_PORT=${VITE_APP_BACKEND_PORT}
+
+# ----------------------------------------------------------------------------------------------------------------------
+  proxy:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - back
+      - front
+    networks: 
+      - vir1-network
 
 volumes:
   db_data:
