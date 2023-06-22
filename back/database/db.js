@@ -15,7 +15,7 @@ const sequelize = new Sequelize({
   port: database_port,
   logging: false,
   define: {
-    timestamps: false // désactive les timestamps pour tous les modèles
+    timestamps: false
   }
 });
 
